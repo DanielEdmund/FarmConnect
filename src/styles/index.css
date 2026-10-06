@@ -1,0 +1,179 @@
+/* ─── Google Fonts import ───────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-sage: #87A878;
+  --color-sage-dark: #6d8a61;
+  --color-terracotta: #C17C53;
+  --color-terracotta-dark: #a36642;
+  --color-cream: #F5F1E8;
+  --color-golden: #D4A373;
+  --color-forest: #3A4A3F;
+  --color-sky: #E8F4F8;
+
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+/* ─── Base ─────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-forest);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Typography ────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 3px;
+}
+
+/* ─── Animations ────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes grow-width {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-gentle { animation: pulse-gentle 2s ease-in-out infinite; }
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-golden) 0%,
+    #f0c97a 30%,
+    var(--color-golden) 60%,
+    #f0c97a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  /* transparent fill would show an inherited text-shadow through the
+     glyphs, so use a drop-shadow filter halo instead */
+  text-shadow: none;
+  filter: drop-shadow(0 2px 6px rgba(26, 34, 28, 0.65));
+}
+
+/* ─── Hero legibility helpers ───────────────────────────── */
+.text-shadow-hero {
+  text-shadow: 0 2px 16px rgba(26, 34, 28, 0.65), 0 1px 4px rgba(26, 34, 28, 0.5);
+}
+
+.text-shadow-hero-sm {
+  text-shadow: 0 1px 10px rgba(26, 34, 28, 0.6), 0 1px 3px rgba(26, 34, 28, 0.45);
+}
+
+/* ─── Glass Morphism ────────────────────────────────────── */
+.glass {
+  background: rgba(245, 241, 232, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(135, 168, 120, 0.2);
+}
+
+.glass-dark {
+  background: rgba(58, 74, 63, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(135, 168, 120, 0.3);
+}
+
+/* ─── Organic Shapes ────────────────────────────────────── */
+.blob-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+/* ─── Card Lift ─────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(58, 74, 63, 0.12);
+}
+
+/* ─── Image overlay ─────────────────────────────────────── */
+.img-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(58,74,63,0.7) 0%, transparent 60%);
+}
+
+/* ─── Stars ─────────────────────────────────────────────── */
+.star-filled { color: #D4A373; }
+.star-empty { color: #d5cfc3; }
+
+/* ─── Gradient backgrounds ──────────────────────────────── */
+.bg-harvest {
+  background: linear-gradient(135deg, #F5F1E8 0%, #faf8f2 50%, #eef7eb 100%);
+}
+
+.bg-forest-gradient {
+  background: linear-gradient(135deg, #3A4A3F 0%, #2d3b32 100%);
+}
+
+/* ─── Progress bars ─────────────────────────────────────── */
+.progress-bar {
+  height: 4px;
+  background: var(--color-sage);
+  border-radius: 2px;
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Tag / Badge ───────────────────────────────────────── */
+.tag-organic {
+  background: rgba(135, 168, 120, 0.15);
+  color: #5a8a4a;
+  border: 1px solid rgba(135, 168, 120, 0.3);
+}
+
+.tag-featured {
+  background: rgba(212, 163, 115, 0.15);
+  color: #a07840;
+  border: 1px solid rgba(212, 163, 115, 0.3);
+}
+
+/* ─── Focus ring ────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+
